@@ -30,7 +30,7 @@ module "google_bigquery_workload_pool" {
 
   project_id     = var.gcp_project["project"]
   grants         = ["roles/bigquery.dataOwner", "roles/bigquery.user"]
-  repo_full_name = "navikt/bomlo-dbt"
+  repo_full_name = "navikt/sp-dbt"
 }
 
 # Make a GCS bucket for bomlo-dbt state
