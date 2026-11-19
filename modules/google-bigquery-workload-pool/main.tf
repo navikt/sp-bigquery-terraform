@@ -20,7 +20,8 @@ resource "google_iam_workload_identity_pool_provider" "github-provider" {
     "attribute.repository_owner"="assertion.repository_owner"
   }
 
-  attribute_condition = "assertion.repository == \"${var.repo_full_name}\""
+  # Bare workflows som kjører på main, kan logge inn, ikke workflows på andre brancher eller PR-er
+  attribute_condition = "assertion.repository == \"${var.repo_full_name}\" && assertion.ref == \"${var.allowed_ref}\""
 
   oidc {
     issuer_uri="https://token.actions.githubusercontent.com"

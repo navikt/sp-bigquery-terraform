@@ -12,3 +12,9 @@ variable "repo_full_name" {
   description = "The full name of the repository to grant access to (org/repo-name)."
   type        = string
 }
+
+variable "allowed_ref" {
+  description = "The Git ref that workflows must run on to get access, for example refs/heads/main."
+  type        = string
+  default     = "refs/heads/main"
+}
